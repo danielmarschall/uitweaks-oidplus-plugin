@@ -22,22 +22,22 @@
 * SOFTWARE.
 */
 
-oidplus_menu_width_uservalue = localStorage.getItem('menu_width') ?? oidplus_menu_width;
+oidplus_menu_width_uservalue = isNull(localStorage.getItem('menu_width'), oidplus_menu_width);
 
 $(document).ready(function () {
 	
 	var tree = $('#oidtree');
 	tree.on('ready.jstree', function (e, data) {
-		var o  = uitweaks.expand_objects_tree ?? false;
-		var l  = uitweaks.collapse_login_tree ?? false;
-		var r  = uitweaks.collapse_res_tree   ?? false;
+		var o  = isNull(uitweaks.expand_objects_tree, false);
+		var l  = isNull(uitweaks.collapse_login_tree, false);
+		var r  = isNull(uitweaks.collapse_res_tree  , false);
 		
 		if (o) tree.jstree('open_all',  data.instance.get_node('oidplus:system'));
 		if (l) tree.jstree('close_all', data.instance.get_node('oidplus:login'));
 		if (r) tree.jstree('close_all', data.instance.get_node('oidplus:resources'));
 	});
 	
-	var menu_remember_width = uitweaks.menu_remember_width ?? false;
+	var menu_remember_width = isNull(uitweaks.menu_remember_width, false);
 	if (menu_remember_width) {
 		handle_glayout_onresize_start = function () {
 			var new_width = parseInt($("#oidtree")[0].style.width, 10);
