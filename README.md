@@ -7,4 +7,4 @@ Tweaks:
 * Change default tree pane width 
 * Remember tree pane width in `browser.localStorage` across page reloads
 
-~The plugin is bundled with the OIDplus itself, there's no need to download it here.~ (not yet)
+The plugin is bundled with the OIDplus itself, there's no need to download it here.
